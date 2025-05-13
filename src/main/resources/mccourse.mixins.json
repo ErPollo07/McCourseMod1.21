@@ -1,6 +1,6 @@
 {
 	"required": true,
-	"package": "net.erpollosgravato.mccourse.mixin",
+	"package": "net.erpollo07.mccourse.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
 		"ExampleMixin"

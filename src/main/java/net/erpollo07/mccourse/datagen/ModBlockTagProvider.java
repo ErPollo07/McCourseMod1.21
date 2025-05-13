@@ -1,4 +1,4 @@
-package net.erpollosgravato.mccourse.datagen;
+package net.erpollo07.mccourse.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;

@@ -16,13 +16,13 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"net.erpollosgravato.mccourse.McCourse"
+			"net.erpollo07.mccourse.McCourse"
 		],
 		"fabric-datagen": [
-			"net.erpollosgravato.mccourse.McCourseDataGenerator"
+			"net.erpollo07.mccourse.McCourseDataGenerator"
 		],
 		"client": [
-			"net.erpollosgravato.mccourse.McCourseClient"
+			"net.erpollo07.mccourse.McCourseClient"
 		]
 	},
 	"mixins": [

@@ -1,5 +1,7 @@
-package net.erpollosgravato.mccourse;
+package net.erpollo07.mccourse;
 
+import net.erpollo07.mccourse.item.ModItemGroups;
+import net.erpollo07.mccourse.item.ModItems;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.LoggerFactory;
 
@@ -11,6 +13,8 @@ public class McCourse implements ModInitializer {
 
   @Override
   public void onInitialize() {
+    ModItems.registerModItems();
 
+    ModItemGroups.registerItemGroup();
   }
 }
