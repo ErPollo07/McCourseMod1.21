@@ -1,7 +1,7 @@
 package net.erpollo07.mccourse.item;
 
 import net.erpollo07.mccourse.McCourse;
-import net.erpollo07.mccourse.item.custom.RulerItem;
+import net.erpollo07.mccourse.item.ruler.RulerItem;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
