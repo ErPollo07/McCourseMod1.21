@@ -21,8 +21,6 @@ import net.minecraft.world.World;
 import java.util.ArrayList;
 
 public class RulerItem extends Item {
-  private BlockPos firstPos;
-
   public RulerItem(Settings settings) {
     super(settings);
   }
@@ -37,7 +35,7 @@ public class RulerItem extends Item {
 
     BlockPos pos = context.getBlockPos();
 
-    if (firstPos != null) {
+    if (RulerState.hasFirstPos()) {
       MinecraftClient client = MinecraftClient.getInstance();
       HitResult hit = client.crosshairTarget;
       if (hit != null && hit.getType() == HitResult.Type.BLOCK) {
@@ -47,25 +45,25 @@ public class RulerItem extends Item {
         context.getPlayer().sendMessage(Text.of("Area: " + calculateArea(crosshairPos)));
       }
 
-      firstPos = null;
+      RulerState.reset();
     }
     else {
-      firstPos = pos;
+      RulerState.setFirstPos(pos);
     }
 
     return ActionResult.SUCCESS;
   }
 
   private int calculateArea(BlockPos secondPos) {
-    int deltaX = Math.abs(firstPos.getX() - secondPos.getX()) + 1;
-    int deltaZ = Math.abs(firstPos.getZ() - secondPos.getZ()) + 1;
-    int deltaY = Math.abs(firstPos.getY() - secondPos.getY()) + 1;
+    int deltaX = Math.abs(RulerState.getFirstPos().getX() - secondPos.getX()) + 1;
+    int deltaZ = Math.abs(RulerState.getFirstPos().getZ() - secondPos.getZ()) + 1;
+    int deltaY = Math.abs(RulerState.getFirstPos().getY() - secondPos.getY()) + 1;
 
     return deltaX * deltaZ * deltaY;
   }
 
   public void renderOverlay(MatrixStack matrices, Camera camera) {
-    if (firstPos == null) return;
+    if (RulerState.hasFirstPos()) return;
 
     MinecraftClient client = MinecraftClient.getInstance();
     HitResult hit = client.crosshairTarget;
@@ -75,10 +73,6 @@ public class RulerItem extends Item {
     Vec3d camPos = camera.getPos();
     BlockPos pos2 = ((BlockHitResult) hit).getBlockPos();
 
-    RulerSelectionHandler.drawBox(firstPos, pos2, camPos, matrices);
-  }
-
-  private BlockPos getFirstPos() {
-    return firstPos;
+    RulerSelectionHandler.drawBox(RulerState.getFirstPos(), pos2, camPos, matrices);
   }
 }
